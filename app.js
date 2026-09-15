@@ -29,7 +29,7 @@ app.get("/listings",async(req,res)=>{
      res.render("listings/index.ejs",{allListing});
 });
 
-//SHOW ROUTE
+//SHOW ROUTE CODE
 app.get("/listings/:id",async(req,res)=>{
     let {id}=req.params;
     const listing=await Listing.findById(id);
