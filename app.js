@@ -19,7 +19,7 @@ async function main(){
 }
 
 
-//index route
+//index route CODE
 app.get("/",(req,res)=>{
     res.send("Welcome to WanderLust");
 });
