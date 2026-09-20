@@ -29,11 +29,23 @@ app.get("/listings",async(req,res)=>{
      res.render("listings/index.ejs",{allListing});
 });
 
+//new route
+app.get("/listings/new",(req,res)=>{
+    res.render("listings/new.ejs");
+});
+
 //SHOW ROUTE CODE
 app.get("/listings/:id",async(req,res)=>{
     let {id}=req.params;
     const listing=await Listing.findById(id);
     res.render("listings/show.ejs",{listing});
+});
+
+//create route
+app.post("/listings",async(req,res)=>{
+    // let listing=req.body.listing;
+    new Listing(req.body.listing).save();
+    res.redirect("/listings");
 });
 
 
