@@ -4,9 +4,12 @@ const mongoose=require("mongoose");
 const MONGO_URL="mongodb://localhost:27017/wanderlust";
 const Listing=require("./models/listing");
 const path=require("path");
+const ejsMate=require("ejs-mate");
+
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
 app.use(express.urlencoded({extended:true}));
+
 
 main().then(()=>{
     console.log("Database connected successfully");
