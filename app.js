@@ -48,7 +48,12 @@ app.post("/listings",async(req,res)=>{
     res.redirect("/listings");
 });
 
-
+//EDIT ROUTE
+app.get("/listings/:id/edit",async(req,res)=>{
+let {id}=req.params;
+    const listing=await Listing.findById(id);
+    res.render("listings/edit.ejs",{listing});
+});
 // app.get("/testListing",async(req,res)=>{
 //     let sampleListing=new Listing({
 //         title:"My new Villa",
@@ -61,6 +66,14 @@ app.post("/listings",async(req,res)=>{
 //      console.log("Listing saved successfully");
 //      res.send("Listing saved successfully");
 // });
+
+//delete route
+app.delete("/listings/:id",async(req,res)=>{
+    let {id}=req.params;
+    let deletedListing=await Listing.findByIdAndDelete(id);
+    console.log("deletedListing");
+    res.redirect("/listings");
+})
 
 app.listen(8080, () => {
     console.log("Server is listening on port 8080");
